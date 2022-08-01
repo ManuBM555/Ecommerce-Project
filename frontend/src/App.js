@@ -6,6 +6,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom"
 import WebFont from "webfontloader"
 import Footer from "./component/layout/Footer/Footer"
 import Home from "./component/Home/Home"
+import ProductDetails from "./component/Product/ProductDetails.js"
 
 
 
@@ -26,6 +27,7 @@ function App() {
       <Routes>
 
       <Route exact path='/' element={<Home />} />
+      <Route exact path='/product/:id' element={<ProductDetails />} />
 
       </Routes>
 

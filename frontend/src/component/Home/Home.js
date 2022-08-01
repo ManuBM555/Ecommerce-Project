@@ -1,52 +1,67 @@
-import React, { Fragment}  from 'react'
+import React, { Fragment, useEffect}  from 'react'
 import {CgMouse} from 'react-icons/cg'
 import "./Home.css"
-import Product from "./Product.js"
+import Product from "./ProductCard.js"
 import MetaData from '../layout/MetaData';
+import { clearErrors, getProduct } from '../../actions/productAction';
+import {useSelector, useDispatch} from "react-redux"
+import Loader from '../layout/Loader/Loader';
+import {useAlert} from "react-alert"
 
-const product = {
-  name: "Blue shirt",
-  image: [{ url: "https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8c2hpcnR8ZW58MHx8MHx8&w=1000&q=80"}],
-  price: "3000",
-  _id: "manu"
-}
+
 
 
 const Home = () => {
 
-  return (
+  const alert = useAlert()
+  const dispatch = useDispatch();
+  const {loading,error,products,productsCount} = useSelector(state=>state.products)
+
+  useEffect(() => {
+
+    if(error) {
+      alert.error(error);
+      dispatch(clearErrors);
+    }
+    dispatch(getProduct())
+  }, [dispatch,error,alert]);
   
-  <Fragment>
 
-    <MetaData title="ECOMMERCE"/>
-      <div className='banner'>
-          <p>Welcome to Ecommerce</p>
-          <h1>FIND AMAZING PRODUCTS BELOW</h1>
+  return (
+    <Fragment>
 
-        <a href='#container'>
-          <button>
-            Scroll <CgMouse />
-          </button>
-        </a>
-      </div>  
+      {loading ? (
+        <Loader />
+      ) : (
+       <Fragment>
 
-      <h2 className='homeHeading'>Featured Products</h2>
+<MetaData title="ECOMMERCE"/>
+  <div className='banner'>
+      <p>Welcome to Ecommerce</p>
+      <h1>FIND AMAZING PRODUCTS BELOW</h1>
 
-      <div className='container' id='container'>
-         <Product product={product} />
-         <Product product={product} />
-         <Product product={product} />
-         <Product product={product} />
-         <Product product={product} />
-         <Product product={product} />
+    <a href='#container'>
+      <button>
+        Scroll <CgMouse />
+      </button>
+    </a>
+  </div>  
 
-      </div>
+  <h2 className='homeHeading'>Featured Products</h2>
 
+  <div className='container' id='container'>
+     
+     {products && products.map((product) => 
+      <Product product={product} />
+     )}
 
-      
-     </Fragment>
-    )
-  } 
+  </div>
+  
+ </Fragment>)}
+    </Fragment>
+  
+  )
+} 
   
  
 
