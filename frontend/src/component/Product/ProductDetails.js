@@ -3,28 +3,28 @@ import Carousel from "react-material-ui-carousel"
 import "./ProductDetails.css"
 import {useSelector,useDispatch} from "react-redux"
 import {clearErrors, getProductDetails} from "../../actions/productAction"
-import { useParams } from 'react-router-dom';
 import ReactStars from 'react-rating-stars-component';
 import ReviewCard from "./ReviewCard.js"
 import Loader from '../layout/Loader/Loader';
 import {useAlert} from "react-alert"
+import MetaData from '../layout/MetaData'
 
  
 const ProductDetails = ({match}) => {
 
   const dispatch = useDispatch();
-  const params = useParams()
   const alert = useAlert()
 
   const {product,loading,error} = useSelector(state=>state.productDetails)
 
   useEffect(() => {
+    
     if(error) {
       alert.error(error);
       dispatch(clearErrors())
     }
-    dispatch(getProductDetails(params.id))
-  }, [dispatch, params.id, error, alert])
+    dispatch(getProductDetails(match.params.id))
+  }, [dispatch, match.params.id, error, alert])
 
   const options = {
       edit: false,
@@ -42,6 +42,7 @@ const ProductDetails = ({match}) => {
     <Fragment>
       {loading? <Loader /> : (
       <Fragment>
+        <MetaData title={`${product.name} -- ECOMMERCE`}/>
         <div className="ProductDetails">
             <div>
               <Carousel>
