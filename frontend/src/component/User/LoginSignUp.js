@@ -88,14 +88,7 @@ const LoginSignUp = ({ history }) => {
       
 
 
-
-
-
-
-
-
-
-    const switchTabs = (e, tab) => {
+     const switchTabs = (e, tab) => {
         if (tab === "login") {
           switcherTab.current.classList.add("shiftToNeutral");
           switcherTab.current.classList.remove("shiftToRight");

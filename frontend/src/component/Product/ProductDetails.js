@@ -26,6 +26,8 @@ const ProductDetails = ({match}) => {
     dispatch(getProductDetails(match.params.id))
   }, [dispatch, match.params.id, error, alert])
 
+
+  
   const options = {
       edit: false,
       color: "rgba(20,20,20,0.1",
