@@ -6,6 +6,7 @@ import { addItemsToCart, removeItemsFromCart } from "../../actions/cartAction";
 import { Typography } from "@material-ui/core";
 import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
 import { Link } from "react-router-dom";
+import MetaData from '../layout/MetaData';
 
 
 
@@ -13,7 +14,8 @@ import { Link } from "react-router-dom";
 
 
 
-const Cart = () => {
+
+const Cart = ({history}) => {
 
     const dispatch = useDispatch();
     const { cartItems } = useSelector((state) => state.cart);
@@ -37,6 +39,10 @@ const Cart = () => {
       const deleteCartItems = (id) => {
         dispatch(removeItemsFromCart(id));
       };
+
+      const checkoutHandler = () => {
+        history.push("/login?redirect=shipping");
+      };
       
 
     const item = {
@@ -48,6 +54,7 @@ const Cart = () => {
     }
   return ( 
     <Fragment>
+      <MetaData title={`Cart`} />
         {cartItems.length === 0 ? (
             <div className="emptyCart">
             <RemoveShoppingCartIcon />
@@ -75,8 +82,8 @@ const Cart = () => {
                     <input type="number" value={item.quantity} readOnly />
                     <button
                      onClick={()=> increaseQuantity(item.product,
-                        item.quantity,
-                        item.stock)}
+                      item.quantity,
+                      item.stock)}
                     >
                       +
                     </button>
@@ -98,7 +105,7 @@ const Cart = () => {
               </div>
               <div></div>
               <div className="checkOutBtn">
-                <button>Check Out</button>
+                <button onClick={checkoutHandler}>Check Out</button>
               </div>
             </div>
         </div>    
