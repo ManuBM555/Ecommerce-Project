@@ -45,13 +45,7 @@ const Cart = ({history}) => {
       };
       
 
-    const item = {
-        product:"productID",
-        price:200,
-        name:"manu",
-        quantity:1,
-        image:"https://i.ibb.co/DRST11n/1.webp"
-    }
+    
   return ( 
     <Fragment>
       <MetaData title={`Cart`} />

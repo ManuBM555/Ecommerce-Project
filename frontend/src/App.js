@@ -28,6 +28,8 @@ import Payment from "./component/Cart/Payment.js"
 import {Elements} from "@stripe/react-stripe-js"
 import {loadStripe} from "@stripe/stripe-js"
 import OrderSuccess from "./component/Cart/OrderSuccess.js"
+import MyOrders from "./component/Order/MyOrders.js"
+import OrderDetails from "./component/Order/OrderDetails.js"
 
 
 
@@ -63,6 +65,16 @@ function App() {
       <Header />
 
       {isAuthenticated && <UserOptions user={user} />}
+
+      {stripeApiKey && (
+        <Elements stripe={loadStripe(stripeApiKey)}>
+        <ProtectedRoute exact path='/process/payment' component={Payment} />
+
+        
+
+        
+        </Elements>
+      )}
     
      <Switch>
 
@@ -91,15 +103,12 @@ function App() {
 
       <ProtectedRoute exact path='/order/confirm' component={ConfirmOrder} />
 
-      
-      {stripeApiKey && (
-        <Elements stripe={loadStripe(stripeApiKey)}>
-        <ProtectedRoute exact path='/process/payment' component={Payment} />
+     <ProtectedRoute exact path='/success' component={OrderSuccess} />
 
-        <ProtectedRoute exact path='/success' component={OrderSuccess} />
-        </Elements>
-      )}
+     <ProtectedRoute exact path='/orders' component={MyOrders} />
 
+     <ProtectedRoute exact path='/order/:id' component={OrderDetails} />
+    
 
       
         

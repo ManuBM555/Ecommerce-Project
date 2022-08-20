@@ -46,7 +46,7 @@ const Payment = ({history}) => {
     const order = {
         shippingInfo,
         orderItems: cartItems,
-        itemsPrice: orderInfo.subtotal,
+        itemPrice: orderInfo.subtotal,
         taxPrice: orderInfo.tax,
         shippingPrice: orderInfo.shippingCharges,
         totalPrice: orderInfo.totalPrice,
@@ -67,7 +67,7 @@ const Payment = ({history}) => {
             },
         };
         const { data } = await axios.post(
-            "/api/v1/process/payment",
+            "/api/v1/payment/process",
             paymentData,
             config
         );
