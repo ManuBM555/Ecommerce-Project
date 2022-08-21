@@ -6,7 +6,8 @@ import {BsCart4} from "react-icons/bs"
 
 
 const options = {
-  burgerColorHover: "#eb4034",
+  burgerColor: "#eb4034",
+  burgerColorHover: "grey",
   logo,
   logoWidth: "20vmax",
   navColor1: "white",
@@ -19,7 +20,7 @@ const options = {
   link1Url: "/",
   link2Url: "/products",
   link3Url: "/contact",
-  link4Url: "/about",
+  link4Url: "/",
   link1Size: "1.3vmax",
   link1Color: "rgba(35, 35, 35,0.8)",
   nav1justifyContent: "flex-end",

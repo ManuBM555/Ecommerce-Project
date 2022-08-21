@@ -260,7 +260,7 @@ exports.getSingleUser = catchAsyncErrors(async(req,res,next) => {
   const user = await User.findById(req.params.id);
 
   if(!user){
-    return next(new ErrorHandler(`User does not exits with Id: ${req.params.id}`));
+    return next(new ErrorHandler(`User does not exits with Id: ${req.params.id}`,400));
   }
 
   res.status(200).json({
@@ -282,7 +282,7 @@ exports.updateUserRole = catchAsyncErrors(async(req,res,next) => {
     role: req.body.role
   };
 
-  const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
+  await User.findByIdAndUpdate(req.params.id, newUserData, {
     new: true,
     runValidators: true,
     useFindAndModify: false
@@ -302,12 +302,15 @@ exports.deleteUser = catchAsyncErrors(async(req,res,next) => {
 
   
  const user = await User.findById(req.params.id);
-  // We will remove cloudinary later
   
  
   if(!user){
     return next(new ErrorHandler(`User does not exits with Id: ${req.params.id}`));
   }
+
+  const imageId = user.avatar.public_id;
+
+  await cloudinary.v2.uploader.destroy(imageId);
 
   await user.remove();
 
