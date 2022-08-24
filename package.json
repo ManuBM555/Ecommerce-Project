@@ -2,11 +2,11 @@
   "name": "ecommerce",
   "version": "1.0.0",
   "description": "",
-  "main": "Backend/server.js",
+  "main": "backend/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node Backend/server.js",
-    "dev": "nodemon Backend/server.js",
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "",
@@ -23,6 +23,7 @@
     "mongoose": "^5.13.5",
     "nodemailer": "^6.7.5",
     "nodemon": "^2.0.16",
+    "react": "^18.2.0",
     "react-icons": "^3.11.0",
     "stripe": "^10.3.0",
     "validator": "^13.7.0"
