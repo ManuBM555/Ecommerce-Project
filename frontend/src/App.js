@@ -81,9 +81,8 @@ function App() {
 
       {stripeApiKey && (
         <Elements stripe={loadStripe(stripeApiKey)}>
-        <ProtectedRoute exact path='/process/payment' component={Payment} />
 
-        
+        <ProtectedRoute exact path ="/process/payment" component={Payment} />
 
         
         </Elements>
