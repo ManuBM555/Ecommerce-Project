@@ -67,7 +67,7 @@ const Payment = ({history}) => {
             },
         };
         const { data } = await axios.post(
-            "/api/v1/payment/process",
+            "/api/v1/process/payment",
             paymentData,
             config
         );

@@ -10,14 +10,13 @@ import { Typography } from '@material-ui/core';
 import {useAlert} from "react-alert"
 import MetaData from '../layout/MetaData';
 
-
+// https://i.ibb.co/DRST11n/1.webp
 
 const categories = [
     "Laptop",
     "Footwear",
-    "Bottom",
-    "Tops",
-    "Attire",
+    "Games",
+    
     "Camera",
     "SmartPhones",
   ];
@@ -29,7 +28,7 @@ const Products = ({ match }) => {
     const alert = useAlert()
 
     const [currentPage, setCurrentPage] = useState(1)
-    const [price, setPrice] = useState([0, 25000])    
+    const [price, setPrice] = useState([0, 300000])    
     const [category, setCategory] = useState("")    
     const [ratings, setRatings] = useState(0)    
 
@@ -88,7 +87,7 @@ const Products = ({ match }) => {
               valueLabelDisplay="auto"
               aria-labelledby="range-slider"
               min={0}
-              max={25000}
+              max={300000}
             />
 
                 <br></br>

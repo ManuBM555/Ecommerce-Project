@@ -46,7 +46,7 @@ import NotFound from "./component/layout/Not Found/NotFound";
 
 function App() {
 
-  const {isAuthenticated,user} = useSelector(state=>state.user)
+  const {isAuthenticated,user} = useSelector((state)=>state.user)
 
   const [stripeApiKey, setStripeApiKey] = useState("")
 
@@ -70,7 +70,7 @@ function App() {
 
   }, [])
 
-  window.addEventListener("contextmenu", (e) => e.preventDefault());
+  //window.addEventListener("contextmenu", (e) => e.preventDefault());
 
   return (
 
@@ -140,13 +140,14 @@ function App() {
      <ProtectedRoute isAdmin={true} exact path='/admin/user/:id' component={UpdateUser} />
 
      <ProtectedRoute isAdmin={true} exact path='/admin/reviews' component={ProductReviews} />
-    
 
-      
-        
-      <Route component={window.location.pathname === "/process/payment" ? null : NotFound} />
        
-
+     <Route
+          component={
+            window.location.pathname === "/process/payment" ? null : NotFound
+          }
+        />
+      
      </Switch>
   
 
