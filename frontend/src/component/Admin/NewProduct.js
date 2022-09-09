@@ -32,7 +32,7 @@ const NewProduct = ({history}) => {
     "Laptop",
     "T-Shirts",
     "Gaming",
-    
+    "Furniture",
     "Camera",
     "SmartPhones",
   ];

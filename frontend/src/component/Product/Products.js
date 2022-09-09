@@ -16,7 +16,7 @@ const categories = [
     "Laptop",
     "T-Shirts",
     "Gaming",
-    
+    "Furniture",
     "Camera",
     "SmartPhones",
   ];

@@ -34,7 +34,7 @@ const UpdateProduct = ({history, match}) => {
     "Laptop",
     "T-Shirts",
     "Gaming",
-    
+    "Furniture",
     "Camera",
     "SmartPhones",
   ];
