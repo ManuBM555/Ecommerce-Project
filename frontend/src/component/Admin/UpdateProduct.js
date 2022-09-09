@@ -32,9 +32,9 @@ const UpdateProduct = ({history, match}) => {
 
   const categories = [
     "Laptop",
-    "T-Shirts",
-    "Gaming",
-    "Furniture",
+    "T-Shirt",
+    "Games",
+    "Furnitures",
     "Camera",
     "SmartPhones",
   ];
