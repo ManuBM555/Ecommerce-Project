@@ -14,8 +14,8 @@ import MetaData from '../layout/MetaData';
 
 const categories = [
     "Laptop",
-    "Footwear",
-    "Games",
+    "T-Shirts",
+    "Gaming",
     
     "Camera",
     "SmartPhones",
